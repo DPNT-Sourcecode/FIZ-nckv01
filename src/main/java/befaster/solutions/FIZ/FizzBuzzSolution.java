@@ -4,23 +4,35 @@ import befaster.runner.SolutionNotImplementedException;
 
 public class FizzBuzzSolution {
     /**
-     - A number is considered to be "deluxe" if it is greater than 10 and all the digits are identical
-     - A number can be "fizz", "buzz" and "deluxe" at the same time. If this happens then write "fizz buzz deluxe"
+     - If a "deluxe" number is odd, we should call him "fake deluxe"
+     - A number cannot be both "deluxe" and "fake deluxe" at the same time
+     - All the previous rules are still valid
      */
     public String fizzBuzz(Integer number) {
         if ((number % 3 == 0 || hasNumber(number, 3)) && (number % 5 == 0 || hasNumber(number, 5)) &&
-            hasIdenticalDigits(number) && number > 10){
+            hasIdenticalDigits(number) && number > 10 && number % 2 == 0){
             return "fizz buzz deluxe";
+        } else if ((number % 3 == 0 || hasNumber(number, 3)) && (number % 5 == 0 || hasNumber(number, 5)) &&
+                hasIdenticalDigits(number) && number > 10 && number % 2 == 1) {
+            return "fizz buzz fake deluxe";
         } else if ((number % 3 == 0 || hasNumber(number, 3)) &&
-                hasIdenticalDigits(number) && number > 10){
+                hasIdenticalDigits(number) && number > 10 && number % 2 == 0){
             return "fizz deluxe";
+        } else if ((number % 3 == 0 || hasNumber(number, 3)) &&
+                hasIdenticalDigits(number) && number > 10 && number % 2 == 1) {
+            return "fizz fake deluxe";
         } else if ((number % 5 == 0 || hasNumber(number, 5)) &&
-                hasIdenticalDigits(number) && number > 10) {
+                hasIdenticalDigits(number) && number > 10 && number % 2 == 1) {
+            return "buzz fake deluxe";
+        } else if ((number % 5 == 0 || hasNumber(number, 5)) &&
+                hasIdenticalDigits(number) && number > 10 && number % 2 == 0) {
             return "buzz deluxe";
         } else if ((number % 3 == 0 || hasNumber(number, 3)) && (number % 5 == 0 || hasNumber(number, 5))) {
             return "fizz buzz";
-        } else if (hasIdenticalDigits(number) && number > 10) {
+        } else if (hasIdenticalDigits(number) && number > 10 && number % 2 == 0) {
             return "deluxe";
+        } else if (hasIdenticalDigits(number) && number > 10 && number % 2 == 1) {
+            return "fake deluxe";
         } else if (number % 3 == 0 || hasNumber(number, 3)) {
             return "fizz";
         } else if (number % 5  == 0 || hasNumber(number, 5)) {
@@ -58,4 +70,5 @@ public class FizzBuzzSolution {
         }
     }
 }
+
 
