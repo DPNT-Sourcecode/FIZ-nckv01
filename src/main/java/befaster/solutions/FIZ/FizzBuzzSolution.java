@@ -30,5 +30,3 @@ public class FizzBuzzSolution {
         return false;
     }
 }
-
-
